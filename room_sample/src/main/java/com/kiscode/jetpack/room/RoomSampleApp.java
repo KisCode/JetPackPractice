@@ -12,19 +12,12 @@ import androidx.room.Room;
  * Date : 2020/2/29 9:57 AM
  **/
 public class RoomSampleApp extends Application {
-    private AppDatabase roomDatabase;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        //创建数据库
-        roomDatabase = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "room_sample_dev.db")
-                .build();
+        AppDatabase.init(this);
     }
 
-    public AppDatabase getRoomDatabase() {
-        return roomDatabase;
-    }
 }

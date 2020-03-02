@@ -5,9 +5,11 @@ import com.kiscode.jetpack.room.pojo.Book;
 import java.util.List;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 
@@ -34,6 +36,7 @@ public interface BookDao {
 
     /**
      * 根据id查询指定图书
+     *
      * @param id
      * @return
      */
@@ -53,6 +56,7 @@ public interface BookDao {
 
     /**
      * 根据指定名称查询对应数据
+     *
      * @param bookName 书名
      * @return
      */
@@ -62,6 +66,7 @@ public interface BookDao {
 
     /**
      * 根据关键字模糊查询
+     *
      * @param nameKeyword 书名关键字
      * @return
      */
@@ -75,9 +80,13 @@ public interface BookDao {
      * @return
      */
     @Query("select * from Book where price between :minPricBe and :maxPrice ")
-    List<Book> getBookListByPrice(float minPricBe,float maxPrice);
+    List<Book> getBookListByPrice(float minPricBe, float maxPrice);
 
 
+    @Delete
+    void deleteBook(Book book);
 
+    @Delete
+    void delteBookList(List<Book> bookList);
 
 }

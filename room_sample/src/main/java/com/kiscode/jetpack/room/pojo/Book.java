@@ -6,6 +6,7 @@ import java.util.Date;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.RoomWarnings;
 
 @Entity
 public class Book {
@@ -13,10 +14,10 @@ public class Book {
     private int id;
     private String name;
     private float price;
-
     private Date pubulisTime;
 
     //嵌入对象,通过prefix添加前缀避免字段重复
+    @SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
     @Embedded(prefix = "author")
     private Author author;
 

@@ -8,9 +8,8 @@ import android.widget.Button;
 import com.kiscode.jetpack.room.db.AppDatabase;
 import com.kiscode.jetpack.room.pojo.Author;
 import com.kiscode.jetpack.room.pojo.Book;
-
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
+import com.kiscode.jetpack.room.pojo.ClassRoom;
+import com.kiscode.jetpack.room.pojo.Student;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,11 +17,16 @@ import java.util.List;
 import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableOperator;
+import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public class RoomSampleActivity extends AppCompatActivity implements View.OnClickListener {
@@ -40,7 +44,7 @@ public class RoomSampleActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initData() {
-        mDataBase = ((RoomSampleApp) getApplication()).getRoomDatabase();
+        mDataBase = AppDatabase.getInstance();
     }
 
     private void initView() {
@@ -54,10 +58,12 @@ public class RoomSampleActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_init_database:
-                insertBookList();
+//                insertBookList();
+                insertClassRoomList();
                 break;
             case R.id.btn_query_all_book:
-                queryAllBookList();
+//                queryAllBookList();
+                queryAllClassRoomList();
                 break;
         }
     }
@@ -106,9 +112,9 @@ public class RoomSampleActivity extends AppCompatActivity implements View.OnClic
                     book.setPrice(100 * random.nextFloat());
                     book.setPubulisTime(new Date());
 
-                    Author author =new Author();
+                    Author author = new Author();
                     author.setId(i);
-                    author.setName("Author Name with "+i);
+                    author.setName("Author Name with " + i);
                     book.setAuthor(author);
 
                     bookList.add(book);
@@ -116,5 +122,51 @@ public class RoomSampleActivity extends AppCompatActivity implements View.OnClic
                 mDataBase.bookDao().insertBookList(bookList);
             }
         }).start();
+    }
+
+    private void insertClassRoomList() {
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final List<ClassRoom> classRoomArrayList = new ArrayList<>();
+                for (int i = 0; i < 15; i++) {
+                    ClassRoom classRoom = new ClassRoom();
+                    classRoom.setNumber(i + 1);
+                    classRoom.setName("v1.ClassRoom Name:" + i);
+//                    classRoom.setCount(30);
+
+                    List<Student> studentList = new ArrayList<>();
+                    for (int j = 1; j < 50; j++) {
+                        Student student = new Student();
+                        student.setName("Student " + j);
+                        studentList.add(student);
+                    }
+
+//            classRoom.setStudentList(studentList);
+
+                    classRoomArrayList.add(classRoom);
+                }
+
+                mDataBase.classRoomDao().insertClassRoomList(classRoomArrayList);
+            }
+        }).start();
+    }
+
+
+    private void queryAllClassRoomList() {
+        mDataBase.classRoomDao()
+                .queryAllClassRoomList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<ClassRoom>>() {
+                    @Override
+                    public void accept(List<ClassRoom> classRoomList) throws Exception {
+                        for (ClassRoom classRoom : classRoomList) {
+                            Log.i("classRoom", classRoom.toString());
+                        }
+                    }
+                });
     }
 }
