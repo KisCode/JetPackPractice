@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loginModel"
+            type="com.keno.databinding.sample.pojo.LoginModel" />
+
+        <variable
+            name="eventPresenter"
+            type="com.keno.databinding.sample.SingleBindingActivity.EventPresenter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SingleBindingActivity">
+
+        <LinearLayout
+            android:id="@+id/ll_result_binding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{loginModel.account}" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{loginModel.password}" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(loginModel.randomNum)}" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_notify_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->eventPresenter.changeAccout()}"
+            android:text="BaseObservable notifyPropertyChanged accout"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_result_binding" />
+
+
+        <Button
+            android:id="@+id/btn_notify_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->eventPresenter.changePassword()}"
+            android:text="BaseObservable notifyAll"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_notify_account" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

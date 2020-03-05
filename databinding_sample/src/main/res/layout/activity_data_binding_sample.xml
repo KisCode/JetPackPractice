@@ -8,6 +8,10 @@
         <variable
             name="loginModel"
             type="com.keno.databinding.sample.pojo.LoginModel" />
+
+        <variable
+            name="eventPresent"
+            type="com.keno.databinding.sample.DataBindingSampleActivity.EventPresent" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,15 +23,16 @@
             android:id="@+id/tv_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:text="Password"
             app:layout_constraintBaseline_toBaselineOf="@id/et_account"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_account" />
 
         <EditText
             android:id="@+id/et_account"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:hint="please input account"
             android:text="@={loginModel.account}"
             app:layout_constraintLeft_toRightOf="@id/tv_account"
@@ -38,14 +43,15 @@
             android:id="@+id/tv_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:text="Password"
             app:layout_constraintBaseline_toBaselineOf="@id/et_passsword"
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <EditText
             android:id="@+id/et_passsword"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:hint="please input password"
             android:text="@={loginModel.password}"
@@ -75,5 +81,32 @@
             android:text="@{loginModel.account}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_result_binding" />
+
+        <Button
+            android:id="@+id/btn_single_bind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->eventPresent.startSingleBindingActivity()}"
+            android:text="@string/title_bind_data"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+        <Button
+            android:id="@+id/btn_envent_bind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="事件绑定"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_single_bind" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

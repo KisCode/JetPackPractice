@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">databinding_sample</string>
+    <string name="title_bind_data">数据绑定</string>
 </resources>
