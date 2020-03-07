@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".EventBindingActivity"></activity>
         <activity
             android:name=".SingleBindingActivity"
             android:label="@string/title_bind_data" />

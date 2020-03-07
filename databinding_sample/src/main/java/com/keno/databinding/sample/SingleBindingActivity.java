@@ -22,7 +22,6 @@ import java.util.Random;
  */
 
 public class SingleBindingActivity extends AppCompatActivity {
-
     private ActivitySingleBindingBinding binding;
     private LoginModel loginModel;
     private UserFieldModel userFieldModel;

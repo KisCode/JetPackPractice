@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="loginModel"
+            type="com.keno.databinding.sample.pojo.LoginModel" />
+
+        <variable
+            name="eventPresent"
+            type="com.keno.databinding.sample.EventBindingActivity.EventPresenter" />
+
+        <variable
+            name="textWatcher"
+            type="com.keno.databinding.sample.EventBindingActivity.EditTextWatch" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".EventBindingActivity">
+<!--        双向数据绑定，EditText变化后动态将数据绑定到 account对象-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={loginModel.account}"
+            app:addTextChangedListener="@{textWatcher}"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->eventPresent.showUserName(loginModel)}"
+            android:text="show Accout"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{eventPresent.onClick}"
+            android:text="onClick"/>
+    </LinearLayout>
+</layout>

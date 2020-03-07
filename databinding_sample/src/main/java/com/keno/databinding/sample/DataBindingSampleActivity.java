@@ -24,6 +24,7 @@ public class DataBindingSampleActivity extends AppCompatActivity {
         //绑定事件持有对象
         binding.setEventPresent(new EventPresent());
 
+
     }
 
     /**
@@ -34,6 +35,10 @@ public class DataBindingSampleActivity extends AppCompatActivity {
     public class EventPresent {
         public void startSingleBindingActivity() {
             startActivity(new Intent(DataBindingSampleActivity.this, SingleBindingActivity.class));
+        }
+
+        public void startEventBindingActivity() {
+            startActivity(new Intent(DataBindingSampleActivity.this, EventBindingActivity.class));
         }
     }
 }
