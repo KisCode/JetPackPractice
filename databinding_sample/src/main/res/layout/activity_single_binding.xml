@@ -9,6 +9,17 @@
             name="loginModel"
             type="com.keno.databinding.sample.pojo.LoginModel" />
 
+        <!--绑定 BaseObserable对象  -->
+        <variable
+            name="userModel"
+            type="com.keno.databinding.sample.pojo.UserFieldModel" />
+
+        <!--绑定 泛型类型为Integer类型ObservableList   -->
+        <variable
+            name="observableList"
+            type="androidx.databinding.ObservableList&lt;Integer&gt;" />
+
+        <!--绑定点击事件  -->
         <variable
             name="eventPresenter"
             type="com.keno.databinding.sample.SingleBindingActivity.EventPresenter" />
@@ -32,7 +43,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{loginModel.account}" />
+                android:text="@{loginModel.account,default = 我是默认值哦}" />
 
 
             <TextView
@@ -47,6 +58,52 @@
                 android:text="@{String.valueOf(loginModel.randomNum)}" />
         </LinearLayout>
 
+
+        <LinearLayout
+            android:id="@+id/ll_field_binding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_result_binding">
+<!--            演示 BaseobserableField的使用-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{userModel.name,default = 我是默认值userName}" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(userModel.age),default = 我是默认年纪}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_observablelist_binding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_field_binding">
+            <!--            演示 BaseobserableField的使用-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="数组长度：" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(observableList.size()),default = 0}" />
+
+        </LinearLayout>
+
         <Button
             android:id="@+id/btn_notify_account"
             android:layout_width="match_parent"
@@ -55,7 +112,7 @@
             android:text="BaseObservable notifyPropertyChanged accout"
             android:textAllCaps="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ll_result_binding" />
+            app:layout_constraintTop_toBottomOf="@id/ll_observablelist_binding" />
 
 
         <Button
@@ -67,5 +124,26 @@
             android:textAllCaps="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_notify_account" />
+
+
+        <Button
+            android:id="@+id/btn_notify_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->eventPresenter.changeUserField()}"
+            android:text="BaseObservableField changeUser"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_notify_all" />
+
+        <Button
+            android:id="@+id/btn_notify_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->eventPresenter.changeList()}"
+            android:text="BaseObservableList Add Item"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_notify_field" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

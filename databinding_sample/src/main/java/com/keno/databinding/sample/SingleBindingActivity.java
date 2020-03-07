@@ -3,12 +3,15 @@ package com.keno.databinding.sample;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableList;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import com.keno.databinding.sample.databinding.ActivitySingleBindingBinding;
 import com.keno.databinding.sample.pojo.LoginModel;
+import com.keno.databinding.sample.pojo.UserFieldModel;
 
 import java.util.Random;
 
@@ -22,20 +25,29 @@ public class SingleBindingActivity extends AppCompatActivity {
 
     private ActivitySingleBindingBinding binding;
     private LoginModel loginModel;
+    private UserFieldModel userFieldModel;
+
+    private ObservableList<Integer> observableList = new ObservableArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         loginModel = new LoginModel("name1", "pwd1");
+        userFieldModel =new UserFieldModel();
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_single_binding);
 
         //绑定事件持有类
         binding.setEventPresenter(new EventPresenter());
 
-        //绑定data
+        //绑定data 继承自BaseObservable
         binding.setLoginModel(loginModel);
+
+        //绑定 BaseObservableField字段的对象
+        binding.setUserModel(userFieldModel);
+
+        binding.setObservableList(observableList);
 
         //实现BaseObservable 的类可进行数据变化监听
         loginModel.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
@@ -63,6 +75,15 @@ public class SingleBindingActivity extends AppCompatActivity {
         public void changePassword() {
             loginModel.setRandomNum(new Random().nextFloat());
             loginModel.setPassword("password:" + new Random().nextInt());
+        }
+
+        public void changeUserField() {
+            userFieldModel.age.set(new Random().nextInt());
+            userFieldModel.name.set("Jordan");
+        }
+
+        public void changeList() {
+            observableList.add(new Random().nextInt());
         }
     }
 }
