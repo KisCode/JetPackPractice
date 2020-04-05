@@ -12,7 +12,7 @@ import com.keno.databinding.sample.pojo.LoginModel;
 /**
 * Description: 数据绑定
 * Author: keno
-* CreateDate: 2020/4/5 10:51
+* CreateDate: 2020/4/5 13:48
 */
 
 public class DataBindingSampleActivity extends AppCompatActivity {
