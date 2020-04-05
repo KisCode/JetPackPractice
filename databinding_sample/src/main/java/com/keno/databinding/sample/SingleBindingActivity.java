@@ -16,7 +16,7 @@ import com.keno.databinding.sample.pojo.UserFieldModel;
 import java.util.Random;
 
 /**
- * Description: 数据绑定实例
+ * Description: 单项数据数据绑定实例
  * Author: keno
  * CreateDate: 2020/3/5 21:26
  */

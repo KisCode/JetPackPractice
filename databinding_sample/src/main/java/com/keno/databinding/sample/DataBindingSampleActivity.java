@@ -9,6 +9,12 @@ import android.os.Bundle;
 import com.keno.databinding.sample.databinding.ActivityDataBindingSampleBinding;
 import com.keno.databinding.sample.pojo.LoginModel;
 
+/**
+* Description: 数据绑定
+* Author: keno
+* CreateDate: 2020/4/5 10:51
+*/
+
 public class DataBindingSampleActivity extends AppCompatActivity {
 
     private ActivityDataBindingSampleBinding binding;
@@ -39,6 +45,15 @@ public class DataBindingSampleActivity extends AppCompatActivity {
 
         public void startEventBindingActivity() {
             startActivity(new Intent(DataBindingSampleActivity.this, EventBindingActivity.class));
+        }
+
+        public void startBindingAdapterActivity() {
+            startActivity(new Intent(DataBindingSampleActivity.this, BindingAdapterActivity.class));
+        }
+
+
+        public void startBindingRecyclerViewActivity() {
+            startActivity(new Intent(DataBindingSampleActivity.this, BindRecyclerviewActivity.class));
         }
     }
 }
