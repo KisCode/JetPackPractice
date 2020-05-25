@@ -4,6 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+/**
+* Description:
+* Author: kisCode
+* Date : 2020/5/25 10:29
+**/
 public class NavigationHomeActivity extends AppCompatActivity {
 
     @Override
