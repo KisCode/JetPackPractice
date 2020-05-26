@@ -8,26 +8,26 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.kiscode.jetpack.navigation.fragment.HomeFragment"
-        android:label="HomeFragment"
+        android:label="Home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
+            app:enterAnim="@anim/scale_rotation" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.kiscode.jetpack.navigation.fragment.DetailFragment"
-        android:label="DetailFragment"
+        android:label="Detail"
         tools:layout="@layout/fragment_detail">
         <action
             android:id="@+id/action_detailFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_exit_anim" />
-        <argument android:name="name"
-            app:argType="string"
-            android:defaultValue="no data" />
+        <argument
+            android:name="name"
+            android:defaultValue="no data"
+            app:argType="string" />
     </fragment>
 </navigation>

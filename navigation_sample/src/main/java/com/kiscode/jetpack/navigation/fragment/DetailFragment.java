@@ -46,5 +46,7 @@ public class DetailFragment extends Fragment {
                 navController.navigate(R.id.action_detailFragment_to_homeFragment);
             }
         });
+
+//        button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_host_fragment));
     }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graphs_vm"
+    app:startDestination="@id/vmHomeFragment">
+
+    <fragment
+        android:id="@+id/vmHomeFragment"
+        android:name="com.kiscode.jetpack.navigation.fragment.VmHomeFragment"
+        android:label="首页"
+        tools:layout="@layout/fragment_vm_home">
+        <action
+            android:id="@+id/action_vmHomeFragment_to_vmDetailFragment"
+            app:destination="@id/vmDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vmDetailFragment"
+        android:name="com.kiscode.jetpack.navigation.fragment.VmDetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_vm_detail">
+        <action
+            android:id="@+id/action_vmDetailFragment_to_vmHomeFragment"
+            app:destination="@id/vmHomeFragment" />
+    </fragment>
+</navigation>
