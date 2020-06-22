@@ -55,5 +55,9 @@ public class DataBindingSampleActivity extends AppCompatActivity {
         public void startBindingRecyclerViewActivity() {
             startActivity(new Intent(DataBindingSampleActivity.this, BindRecyclerviewActivity.class));
         }
+
+        public void startSavedStateActivity() {
+            startActivity(new Intent(DataBindingSampleActivity.this, ViewModelSavedStateActivity.class));
+        }
     }
 }
