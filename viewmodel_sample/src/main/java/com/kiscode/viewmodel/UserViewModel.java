@@ -1,7 +1,11 @@
 package com.kiscode.viewmodel;
 
+import android.app.Application;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.kiscode.viewmodel.pojo.User;
 
@@ -14,8 +18,19 @@ import java.util.Random;
  * Author: keno
  * Date : 2021/3/15 11:37
  **/
-public class UserViewModel extends ViewModel {
+//public class UserViewModel extends ViewModel {
+public class UserViewModel extends AndroidViewModel {
     private MutableLiveData<List<User>> users;
+
+    public UserViewModel(@NonNull Application application) {
+        super(application);
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        Log.i("UserViewModel","onCleared");
+    }
 
     public MutableLiveData<List<User>> getUsers() {
         if (users == null) {
@@ -26,6 +41,7 @@ public class UserViewModel extends ViewModel {
     }
 
     public void refresh() {
+        Log.i("refrsh", "refrsh:" + getApplication());
         loadUsers();
     }
 

@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * Description:
- * Author: kanjianxiong
+ * Author: keno
  * Date : 2021/3/15 13:43
  **/
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {

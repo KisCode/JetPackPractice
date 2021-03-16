@@ -2,6 +2,7 @@ package com.kiscode.jetpack.room.pojo;
 
 import android.graphics.Bitmap;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -9,7 +10,9 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Author {
+    @NonNull
     @PrimaryKey
+    @ColumnInfo(name = "id")
     private int id;
 
     private String name;

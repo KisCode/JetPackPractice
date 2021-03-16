@@ -83,7 +83,8 @@ public class ViewModelHomeActivity extends AppCompatActivity {
     }
 
     private void initViewModel() {
-        userViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(UserViewModel.class);
+//        userViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(UserViewModel.class);
+        userViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(UserViewModel.class);
     }
 
     private void loadData() {
