@@ -28,6 +28,8 @@ public class BindingAdapterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_binding_adapter);
+        //
+        binding.setLifecycleOwner(this);
         userFieldModel = new UserFieldModel();
 
         binding.setUserInfo(userFieldModel);

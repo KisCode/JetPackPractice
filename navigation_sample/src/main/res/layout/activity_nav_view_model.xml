@@ -6,12 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".NavViewModelActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_vm"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
     <fragment
         android:id="@+id/nav_host_fragment_vm"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:defaultNavHost="true"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_vm"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:navGraph="@navigation/navigation_graphs_vm"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp" />

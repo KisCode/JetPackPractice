@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -35,7 +37,7 @@ public class DetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String name = getArguments().getString("name");
+        final String name = getArguments().getString("name");
         final NavController navController = Navigation.findNavController(view);
         Button button = view.findViewById(R.id.btn_to_home);
         TextView tvName = view.findViewById(R.id.tv_name);
@@ -47,6 +49,15 @@ public class DetailFragment extends Fragment {
             }
         });
 
+
 //        button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_host_fragment));
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        final String name = getArguments().getString("name");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(name);
     }
 }
