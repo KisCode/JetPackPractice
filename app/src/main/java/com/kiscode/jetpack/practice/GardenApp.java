@@ -6,7 +6,7 @@ import com.kiscode.jetpack.practice.data.AppDatabase;
 
 /**
  * Description:
- * Author: kanjianxiong
+ * Author: keno
  * Date : 2021/3/16 16:37
  **/
 public class GardenApp extends Application {

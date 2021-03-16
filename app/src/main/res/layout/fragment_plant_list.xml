@@ -14,17 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swiperefreshlayout_home"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_garden"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <TextView
             isGone="@{hasPlantings}"

@@ -16,7 +16,7 @@ import com.kiscode.jetpack.practice.workers.SeedDatabaseWorker;
 
 /**
  * Description:
- * Author: kanjianxiong
+ * Author: keno
  * Date : 2021/3/16 16:21
  **/
 @Database(version = 1,
