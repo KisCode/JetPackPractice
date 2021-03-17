@@ -39,7 +39,7 @@ public class GardenFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void subScribeUi(FragmentGardenBinding binding, final PlantListAdapter adapter) {
+    private void subScribeUi(final FragmentGardenBinding binding, final PlantListAdapter adapter) {
         //初始化ViewModel
         PlantListViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(PlantListViewModel.class);
 
@@ -47,6 +47,7 @@ public class GardenFragment extends Fragment {
             @Override
             public void onChanged(List<Plant> plants) {
                 adapter.setNewDatas(plants);
+                binding.setHasPlantings(plants!=null && !plants.isEmpty());
             }
         });
     }
