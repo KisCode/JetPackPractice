@@ -18,11 +18,15 @@
         android:name="com.kiscode.jetpack.practice.ui.fragment.PlantListFragment"
         android:label="PlantListFragment" >
         <action
-            android:id="@+id/action_plantListFragment_to_plantDetailFragment2"
+            android:id="@+id/action_plantListFragment_to_plantDetailFragment"
             app:destination="@id/plant_detail_fragment" />
     </fragment>
     <fragment
         android:id="@+id/plant_detail_fragment"
         android:name="com.kiscode.jetpack.practice.ui.fragment.PlantDetailFragment"
-        android:label="PlantDetailFragment" />
+        android:label="PlantDetailFragment" >
+        <argument
+            android:name="plantId"
+            app:argType="string"/>
+    </fragment>
 </navigation>

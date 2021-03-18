@@ -10,6 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
+import com.kiscode.jetpack.practice.data.pojo.FavoritePlant;
 import com.kiscode.jetpack.practice.data.pojo.Plant;
 import com.kiscode.jetpack.practice.workers.SeedDatabaseWorker;
 
@@ -21,7 +22,7 @@ import com.kiscode.jetpack.practice.workers.SeedDatabaseWorker;
  **/
 @Database(version = 1,
         exportSchema = false,
-        entities = Plant.class)
+        entities = {Plant.class, FavoritePlant.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase roomDatabase;
 
@@ -36,7 +37,7 @@ public abstract class AppDatabase extends RoomDatabase {
         if (roomDatabase == null) {
             synchronized (AppDatabase.class) {
                 if (roomDatabase == null) {
-                    roomDatabase = Room.databaseBuilder(context.getApplicationContext(),AppDatabase.class, "room_db.db")
+                    roomDatabase = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "room_db.db")
                             .addCallback(new Callback() {
                                 @Override
                                 public void onCreate(@NonNull SupportSQLiteDatabase db) {
@@ -52,4 +53,6 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     public abstract PlantDao getPlantDao();
-} 
+
+    public abstract GardenDao getGardenDao();
+}
