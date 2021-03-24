@@ -1,12 +1,14 @@
-package com.kiscode.jetpack.practice.ui.bindadapter;
+package com.kiscode.jetpack.practice.data.bindadapter;
 
 
-import android.media.Image;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.core.text.HtmlCompat;
 import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
@@ -36,5 +38,15 @@ public class PlantBindingAdapter {
     @BindingAdapter("isGone")
     public static void bindIsGone(View view, boolean isGone) {
         view.setVisibility(isGone ? View.GONE : View.VISIBLE);
+    }
+
+    @BindingAdapter("renderHtml")
+    public static void bindReaderHtml(TextView view, String description) {
+        if (description == null) {
+            view.setText("");
+        } else {
+            view.setText(HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT));
+            view.setMovementMethod(LinkMovementMethod.getInstance());
+        }
     }
 }

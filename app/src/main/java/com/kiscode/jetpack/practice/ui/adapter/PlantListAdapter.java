@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kiscode.jetpack.practice.BR;
 import com.kiscode.jetpack.practice.R;
 import com.kiscode.jetpack.practice.data.pojo.Plant;
+import com.kiscode.jetpack.practice.ui.fragment.PlantDetailFragment;
 
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class PlantListAdapter extends RecyclerView.Adapter<PlantListAdapter.Plan
         return v -> {
             Plant plant = mDatas.get(position);
             Bundle bundle = new Bundle();
-            bundle.putString("plantId", plant.getPlantId());
+            bundle.putString(PlantDetailFragment.KEY_PLANT_ID, plant.getPlantId());
             Navigation.findNavController(v).navigate(R.id.action_plantListFragment_to_plantDetailFragment, bundle);
         };
     }

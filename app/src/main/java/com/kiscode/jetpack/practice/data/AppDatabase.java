@@ -6,11 +6,13 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.kiscode.jetpack.practice.data.pojo.FavoritePlant;
+import com.kiscode.jetpack.practice.data.convert.Converters;
+import com.kiscode.jetpack.practice.data.pojo.GardenPlant;
 import com.kiscode.jetpack.practice.data.pojo.Plant;
 import com.kiscode.jetpack.practice.workers.SeedDatabaseWorker;
 
@@ -22,7 +24,8 @@ import com.kiscode.jetpack.practice.workers.SeedDatabaseWorker;
  **/
 @Database(version = 1,
         exportSchema = false,
-        entities = {Plant.class, FavoritePlant.class})
+        entities = {Plant.class, GardenPlant.class})
+@TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase roomDatabase;
 

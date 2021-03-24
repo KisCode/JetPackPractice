@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.kiscode.jetpack.practice.data.pojo.FavoritePlant;
+import com.kiscode.jetpack.practice.data.pojo.GardenPlant;
 import com.kiscode.jetpack.practice.data.pojo.Plant;
 import com.kiscode.jetpack.practice.databinding.FragmentGardenBinding;
 import com.kiscode.jetpack.practice.ui.adapter.PlantListAdapter;
@@ -45,9 +45,9 @@ public class GardenFragment extends Fragment {
         //初始化ViewModel
         GardenViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(GardenViewModel.class);
 
-        viewModel.favoritePlantsLiveData.observe(getViewLifecycleOwner(), new Observer<List<FavoritePlant>>() {
+        viewModel.favoritePlantsLiveData.observe(getViewLifecycleOwner(), new Observer<List<GardenPlant>>() {
             @Override
-            public void onChanged(List<FavoritePlant> plants) {
+            public void onChanged(List<GardenPlant> plants) {
                 Log.i("onChanged", "onChanged:" + plants.size());
 //                adapter.setNewDatas(plants);
 //                binding.setHasPlantings(plants!=null && !plants.isEmpty());

@@ -21,6 +21,9 @@ public interface PlantDao {
     @Query("SELECT * FROM tb_plant ORDER BY name")
     LiveData<List<Plant>> getPlants();
 
+    @Query("SELECT * FROM tb_plant where id = :plantId")
+    LiveData<Plant> getPlantById(String plantId);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<Plant> list);
 } 

@@ -1,6 +1,7 @@
 package com.kiscode.jetpack.practice.data.pojo;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -19,10 +20,11 @@ public class Plant {
      * wateringInterval : 30
      * imageUrl : https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg
      */
-
     @NonNull
     @PrimaryKey
+    @ColumnInfo(name = "id")
     private String plantId;
+
     private String name;
     private String description;
     private int growZoneNumber;
