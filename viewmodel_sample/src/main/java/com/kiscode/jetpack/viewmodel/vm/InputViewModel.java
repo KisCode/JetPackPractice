@@ -18,7 +18,7 @@ public class InputViewModel extends ViewModel {
 
     public MutableLiveData<String> getName() {
         if (name == null) {
-            name = new MutableLiveData<>("");
+            name = new MutableLiveData<>();
         }
         return name;
     }

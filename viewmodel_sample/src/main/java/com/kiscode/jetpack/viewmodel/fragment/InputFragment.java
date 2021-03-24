@@ -13,9 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStore;
 
-import com.kiscode.jetpack.viewmodel.R;
 import com.kiscode.jetpack.viewmodel.vm.InputViewModel;
+import com.kiscode.viewmodel.R;
 
 /****
  * ProjectName: JetPackPractice
@@ -32,7 +33,8 @@ public class InputFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_input, container, false);
-        viewModel = new ViewModelProvider(requireActivity()).get(InputViewModel.class);
+        new ViewModelProvider((ViewModelStore) getViewLifecycleOwner(),new ViewModelProvider.NewInstanceFactory());
+        viewModel = new ViewModelProvider(this,new ViewModelProvider.NewInstanceFactory()).get(InputViewModel.class);
 
         EditText editText = view.findViewById(R.id.et_input);
         editText.addTextChangedListener(new TextWatcher() {

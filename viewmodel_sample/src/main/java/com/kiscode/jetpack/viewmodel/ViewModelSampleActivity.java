@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kiscode.viewmodel.R;
+
 public class ViewModelSampleActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnUsage;
