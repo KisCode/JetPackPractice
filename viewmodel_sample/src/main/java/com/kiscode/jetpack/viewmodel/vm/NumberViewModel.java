@@ -18,7 +18,7 @@ public class NumberViewModel extends ViewModel {
 
     public MutableLiveData<Integer> getNumber() {
         if (number == null) {
-            number = new MutableLiveData<>(0);
+            number = new MutableLiveData<>();
         }
         return number;
     }

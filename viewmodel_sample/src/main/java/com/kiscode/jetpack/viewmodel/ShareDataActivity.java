@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.kiscode.viewmodel.R;
+
 public class ShareDataActivity extends AppCompatActivity {
 
     @Override

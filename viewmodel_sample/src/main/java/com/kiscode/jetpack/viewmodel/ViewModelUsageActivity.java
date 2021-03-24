@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.kiscode.jetpack.viewmodel.vm.NumberViewModel;
+import com.kiscode.viewmodel.R;
 
 /**
  * Description: ViewModel用法演示 （不包含DataBinding）
@@ -26,7 +27,7 @@ public class ViewModelUsageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_model_usage);
         Log.i(TAG, "oncreate");
-        viewModel = new ViewModelProvider(this).get(NumberViewModel.class);
+        viewModel = new ViewModelProvider(this,new ViewModelProvider.NewInstanceFactory()).get(NumberViewModel.class);
 
         final TextView tvNumber = findViewById(R.id.tvNumber);
         tvNumber.setText(String.valueOf(viewModel.getNumber().getValue()));
