@@ -36,6 +36,7 @@ public class PlantDetailFragment extends Fragment {
         String plantId = getArguments().getString(KEY_PLANT_ID);
         PlantDetailViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(PlantDetailViewModel.class);
         binding.setPlantViewmodel(viewModel);
+//        binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);        //解決ViewModel刷新問題
         viewModel.loadById(plantId);
         setHasOptionsMenu(true);
@@ -44,6 +45,13 @@ public class PlantDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 viewModel.addToGarden(plantId);
+            }
+        });
+
+        viewModel.isPlanted.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                Log.i("isPlanted","onChange "+aBoolean);
             }
         });
     }

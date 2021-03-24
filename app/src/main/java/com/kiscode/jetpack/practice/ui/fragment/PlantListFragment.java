@@ -50,7 +50,7 @@ public class PlantListFragment extends Fragment {
         viewModel.getPlantsLiveData().observe(getViewLifecycleOwner(), new Observer<List<Plant>>() {
             @Override
             public void onChanged(List<Plant> plants) {
-                Collections.shuffle(plants);        //随机排序
+//                Collections.shuffle(plants);        //随机排序
                 adapter.setNewDatas(plants);
                 binding.setHasPlantings(plants != null && !plants.isEmpty());
             }

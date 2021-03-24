@@ -13,7 +13,7 @@ buildscript {
         appcompatVersion = '1.2.0'
         constraintlayoutVersion = '2.0.4'
         navigationVersion = '2.2.2'
-        roomVersion = '1.1.1'
+        roomVersion = '2.2.6'
         workVersion = '2.3.4'
         lifecycleVersion = '2.2.0'
         lifecycleViewmodelSavedstateVersion = '2.3.0-alpha04'

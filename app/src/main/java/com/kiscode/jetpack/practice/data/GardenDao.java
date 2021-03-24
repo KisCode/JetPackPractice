@@ -22,7 +22,7 @@ public interface GardenDao {
     @Query("SELECT * FROM tb_garden_plant ORDER BY favoriteTime desc")
     LiveData<List<GardenPlant>> queryAll();
 
-    @Query("SELECT * FROM tb_garden_plant where id = :plantId")
+    @Query("SELECT * FROM tb_garden_plant where plant_id = :plantId")
     LiveData<GardenPlant> queryById(String plantId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
