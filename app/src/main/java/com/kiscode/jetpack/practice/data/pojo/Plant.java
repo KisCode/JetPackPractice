@@ -22,7 +22,7 @@ public class Plant {
      */
     @NonNull
     @PrimaryKey
-    @ColumnInfo(name = "id")
+    @ColumnInfo
     private String plantId;
 
     private String name;

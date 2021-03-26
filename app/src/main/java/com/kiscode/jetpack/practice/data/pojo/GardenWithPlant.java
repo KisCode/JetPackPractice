@@ -11,10 +11,10 @@ import androidx.room.Relation;
  */
 
 public class GardenWithPlant {
-    @Relation(parentColumn = "id", entityColumn = "plant_id")
+    @Embedded
     private GardenPlant gardenPlant;
 
-    @Embedded
+    @Relation(parentColumn = "plant_id", entityColumn = "plantId")
     private Plant plant;
 
     public GardenPlant getGardenPlant() {
