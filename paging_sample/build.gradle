@@ -33,6 +33,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.appcompatVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintlayoutVersion"
 
+    implementation "com.google.android.material:material:$materialVersion"
+
     // add for room
     implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
     //配合rxjava使用

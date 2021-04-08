@@ -2,10 +2,12 @@ package com.kiscode.paging.viewmodel;
 
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
+import com.kiscode.paging.comman.LoadStatus;
 import com.kiscode.paging.model.datasoure.UserDataSoureFactory;
 import com.kiscode.paging.model.pojo.User;
 
@@ -16,7 +18,16 @@ import com.kiscode.paging.model.pojo.User;
  */
 
 public class UserViewModel extends ViewModel {
-    public LiveData<PagedList<User>> pagedListLiveData = new LivePagedListBuilder<>(new UserDataSoureFactory(), 100).build();
+    private final UserDataSoureFactory factory;
+    public final LiveData<PagedList<User>> pagedListLiveData;
+    public final LiveData<LoadStatus> loadStatusLiveData;
+
+    public UserViewModel() {
+        factory = new UserDataSoureFactory();
+        pagedListLiveData = new LivePagedListBuilder<>(factory, 100).build();
+//        loadStatusLiveData = Transformations.switchMap(factory.userDataSoureLiveData, input -> input.loadStatusLiveData);
+        loadStatusLiveData = factory.userDataSoureLiveData;
+    }
 
 
     public void resetQuery() {

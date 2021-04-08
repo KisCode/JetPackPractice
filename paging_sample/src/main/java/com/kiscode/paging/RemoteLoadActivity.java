@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.kiscode.paging.adapter.UserAdapter;
+import com.kiscode.paging.comman.LoadStatus;
 import com.kiscode.paging.model.pojo.User;
 import com.kiscode.paging.viewmodel.UserViewModel;
 
@@ -45,13 +47,14 @@ public class RemoteLoadActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(UserViewModel.class);
 
-        viewModel.pagedListLiveData.observe(this, new Observer<PagedList<User>>() {
-            @Override
-            public void onChanged(PagedList<User> users) {
-                swipeRefreshLayout.setRefreshing(false);
-                adapter.submitList(users);
-            }
+        viewModel.pagedListLiveData.observe(this, users -> {
+            swipeRefreshLayout.setRefreshing(false);
+            adapter.submitList(users);
         });
+
+ /*       viewModel.loadStatusLiveData.observe(this, loadStatus -> {
+            Log.i("loadResult", loadStatus.name());
+        });*/
 
 
     }
