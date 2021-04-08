@@ -1,3 +1,5 @@
+include ':paging_sample'
+include ':sqlcipher_sample'
 rootProject.name='JetPackPractice'
 include ':app'
 include ':viewmodel_sample'
