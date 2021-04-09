@@ -18,20 +18,20 @@ import com.kiscode.paging.model.pojo.User;
  */
 
 public class UserViewModel extends ViewModel {
-    private final UserDataSoureFactory factory;
     public final LiveData<PagedList<User>> pagedListLiveData;
     public final LiveData<LoadStatus> loadStatusLiveData;
+    private final UserDataSoureFactory factory;
 
     public UserViewModel() {
         factory = new UserDataSoureFactory();
         pagedListLiveData = new LivePagedListBuilder<>(factory, 100).build();
-//        loadStatusLiveData = Transformations.switchMap(factory.userDataSoureLiveData, input -> input.loadStatusLiveData);
-        loadStatusLiveData = factory.userDataSoureLiveData;
+        loadStatusLiveData = Transformations.switchMap(factory.userDataSoureLiveData, input -> input.loadStatusLiveData);
     }
 
 
     public void resetQuery() {
         //刷新数据
         pagedListLiveData.getValue().getDataSource().invalidate();
+
     }
 }

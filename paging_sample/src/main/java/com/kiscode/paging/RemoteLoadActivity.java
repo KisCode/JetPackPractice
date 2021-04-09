@@ -52,9 +52,9 @@ public class RemoteLoadActivity extends AppCompatActivity {
             adapter.submitList(users);
         });
 
- /*       viewModel.loadStatusLiveData.observe(this, loadStatus -> {
+        viewModel.loadStatusLiveData.observe(this, loadStatus -> {
             Log.i("loadResult", loadStatus.name());
-        });*/
+        });
 
 
     }

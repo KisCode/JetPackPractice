@@ -1,6 +1,8 @@
 package com.kiscode.paging.model.datasoure;
 
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -67,6 +69,7 @@ public class UserDataSoure extends PageKeyedDataSource<Integer, User> {
 
             @Override
             public void onFailed(Throwable throwable) {
+                Log.i("onFailed",throwable.getMessage());
                 loadStatusLiveData.postValue(LoadStatus.FAILED);
             }
         });
