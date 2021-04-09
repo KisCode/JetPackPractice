@@ -2,11 +2,9 @@ package com.kiscode.paging.model.datasoure;
 
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
 
-import com.kiscode.paging.comman.LoadStatus;
 import com.kiscode.paging.model.pojo.User;
 
 /****
@@ -18,7 +16,6 @@ import com.kiscode.paging.model.pojo.User;
 public class UserDataSoureFactory extends DataSource.Factory<Integer, User> {
     public MutableLiveData<UserDataSoure> userDataSoureLiveData = new MutableLiveData<>();
 
-
     @NonNull
     @Override
     public DataSource<Integer, User> create() {
@@ -26,6 +23,4 @@ public class UserDataSoureFactory extends DataSource.Factory<Integer, User> {
         userDataSoureLiveData.postValue(userDataSoure);
         return userDataSoure;
     }
-
-
 }
