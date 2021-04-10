@@ -16,6 +16,9 @@ import com.kiscode.paging.model.pojo.User;
 public class UserDataSoureFactory extends DataSource.Factory<Integer, User> {
     public MutableLiveData<UserDataSoure> userDataSoureLiveData = new MutableLiveData<>();
 
+    public UserDataSoureFactory() {
+    }
+
     @NonNull
     @Override
     public DataSource<Integer, User> create() {
@@ -23,4 +26,6 @@ public class UserDataSoureFactory extends DataSource.Factory<Integer, User> {
         userDataSoureLiveData.postValue(userDataSoure);
         return userDataSoure;
     }
+
+
 }

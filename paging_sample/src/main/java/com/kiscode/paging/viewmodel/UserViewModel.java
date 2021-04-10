@@ -22,16 +22,16 @@ public class UserViewModel extends ViewModel {
     public final LiveData<LoadStatus> loadStatusLiveData;
     private final UserDataSoureFactory factory;
 
+
     public UserViewModel() {
         factory = new UserDataSoureFactory();
         pagedListLiveData = new LivePagedListBuilder<>(factory, 100).build();
+
         loadStatusLiveData = Transformations.switchMap(factory.userDataSoureLiveData, input -> input.loadStatusLiveData);
     }
 
 
     public void resetQuery() {
-        //刷新数据
-        pagedListLiveData.getValue().getDataSource().invalidate();
-
+        factory.userDataSoureLiveData.getValue().resetQuery();
     }
 }

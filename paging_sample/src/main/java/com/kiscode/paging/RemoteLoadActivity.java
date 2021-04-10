@@ -17,6 +17,10 @@ import com.kiscode.paging.comman.LoadStatus;
 import com.kiscode.paging.model.pojo.User;
 import com.kiscode.paging.viewmodel.UserViewModel;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
+
 public class RemoteLoadActivity extends AppCompatActivity {
 
     private UserViewModel viewModel;
@@ -55,6 +59,7 @@ public class RemoteLoadActivity extends AppCompatActivity {
         viewModel.loadStatusLiveData.observe(this, loadStatus -> {
             Log.i("loadResult", loadStatus.name());
         });
+
 
 
     }
