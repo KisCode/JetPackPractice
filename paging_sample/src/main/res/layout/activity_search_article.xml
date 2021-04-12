@@ -15,14 +15,6 @@
         android:layout_height="match_parent"
         tools:context=".SearchArticleActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:id="@+id/toobar_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/purple_500"
-            app:layout_constraintTop_toTopOf="parent"
-            app:titleTextColor="@color/white" />
 
         <EditText
             android:id="@+id/searchView"
@@ -32,7 +24,7 @@
             android:text="@={viewmodel.title}"
             app:layout_constraintEnd_toStartOf="@+id/btn_clear"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toobar_search" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_clear"

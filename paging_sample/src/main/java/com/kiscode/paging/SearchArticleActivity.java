@@ -1,9 +1,14 @@
 package com.kiscode.paging;
 
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MenuItem;
+import android.widget.EditText;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.paging.PagedList;
@@ -11,18 +16,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-
 import com.kiscode.paging.adapter.ArticleAdapter;
 import com.kiscode.paging.databinding.ActivitySearchArticleBinding;
 import com.kiscode.paging.model.pojo.Article;
 import com.kiscode.paging.viewmodel.ArticleViewModel;
 
-public class SearchArticleActivity extends AppCompatActivity {
+public class SearchArticleActivity extends BaseActionBarActivity {
 
     private ActivitySearchArticleBinding binding;
     private ArticleAdapter adapter;
@@ -34,9 +33,8 @@ public class SearchArticleActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search_article);
 
+        getSupportActionBar().setTitle(R.string.title_mock_net_with_search);
 
-        initToolBar(binding.toobarSearch);
-        initSearchView(binding.searchView);
         initRecyclerView(binding.recyclerView);
 
         initViewModel();
@@ -59,13 +57,6 @@ public class SearchArticleActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void initToolBar(Toolbar toobarSearch) {
-        setSupportActionBar(toobarSearch);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//添加默认的返回图标
-        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
-        toobarSearch.setNavigationOnClickListener(v -> finish());
     }
 
 

@@ -1,6 +1,9 @@
 package com.kiscode.paging.viewmodel;
 
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
@@ -30,6 +33,10 @@ public class UserViewModel extends ViewModel {
         loadStatusLiveData = Transformations.switchMap(factory.userDataSoureLiveData, input -> input.loadStatusLiveData);
     }
 
+
+    public void retry() {
+        factory.userDataSoureLiveData.getValue().retry();
+    }
 
     public void resetQuery() {
         factory.userDataSoureLiveData.getValue().resetQuery();

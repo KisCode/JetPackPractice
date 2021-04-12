@@ -8,5 +8,5 @@ package com.kiscode.paging.comman;
  */
 
 public enum LoadStatus {
-    LOADING, FAILED, COMPLETE
+    INITAL_LOADING, LOADING, FAILED, COMPLETE
 }

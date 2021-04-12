@@ -19,7 +19,7 @@ import com.kiscode.paging.model.db.AppDatabase;
 import com.kiscode.paging.model.db.StudentDao;
 import com.kiscode.paging.model.pojo.Student;
 
-public class RoomLoadActivity extends AppCompatActivity {
+public class RoomLoadActivity extends BaseActionBarActivity {
     private static final String TAG = "LocalDataActivity";
     private RecyclerView recyclerView;
     private Button btnPopulate, btnClear;
@@ -32,6 +32,8 @@ public class RoomLoadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local_data);
+
+        getSupportActionBar().setTitle(R.string.title_room_paging);
 
         recyclerView = findViewById(R.id.recyclerView);
 

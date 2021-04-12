@@ -1,9 +1,12 @@
 package com.kiscode.paging.model.datasoure;
 
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.arch.core.executor.ArchTaskExecutor;
+import androidx.core.util.Consumer;
 import androidx.lifecycle.MutableLiveData;
 import androidx.paging.PageKeyedDataSource;
 
@@ -12,7 +15,6 @@ import com.kiscode.paging.model.mock.MockApi;
 import com.kiscode.paging.model.pojo.User;
 
 import java.util.List;
-import java.util.function.Function;
 
 /****
  * Description: 
@@ -31,24 +33,29 @@ public class UserDataSoure extends PageKeyedDataSource<Integer, User> {
         Log.i("UserDataSoure", "UserDataSoure");
     }
 
+    //重试函数
+    public Consumer<Void> retryConsumer;
+
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params,
                             @NonNull LoadInitialCallback<Integer, User> callback) {
-        //初始化
-        List<User> userList = MockApi.loadUserList(PAGE_INNITIAL, PAGE_SIZE);
-        callback.onResult(userList, null, PAGE_INNITIAL + 1);
+        retryConsumer = null;
+        loadStatusLiveData.postValue(LoadStatus.INITAL_LOADING);
 
-/*        MockApi.loadUserList(PAGE_INNITIAL, new MockApi.OnLoadListener() {
+        //初始化
+        MockApi.loadUserList(PAGE_INNITIAL, PAGE_SIZE, new MockApi.OnLoadListener() {
             @Override
             public void onLoad(List<User> userList) {
+                loadStatusLiveData.postValue(LoadStatus.COMPLETE);
                 callback.onResult(userList, null, PAGE_INNITIAL + 1);
             }
 
             @Override
             public void onFailed(Throwable throwable) {
                 loadStatusLiveData.postValue(LoadStatus.FAILED);
+                retryConsumer = (Void v) -> loadInitial(params, callback);
             }
-        });*/
+        });
 
     }
 
@@ -66,23 +73,36 @@ public class UserDataSoure extends PageKeyedDataSource<Integer, User> {
         List<User> userList = MockApi.loadUserList(params.key);
         callback.onResult(userList, params.key + 1);
 */
+        Log.i("loadAfter", Thread.currentThread().getName() + "\tretry : " + (retryConsumer != null));
+        retryConsumer = null;
+        loadStatusLiveData.postValue(LoadStatus.LOADING);
 
         MockApi.loadUserList(params.key, PAGE_SIZE, new MockApi.OnLoadListener() {
             @Override
             public void onLoad(List<User> userList) {
+                loadStatusLiveData.postValue(LoadStatus.COMPLETE);
                 callback.onResult(userList, params.key + 1);
             }
 
             @Override
             public void onFailed(Throwable throwable) {
+                retryConsumer = (Void v) -> loadAfter(params, callback);
+
                 Log.i("onFailed", throwable.getMessage());
                 loadStatusLiveData.postValue(LoadStatus.FAILED);
+
             }
         });
     }
 
     public void resetQuery() {
         invalidate();
+    }
+
+    @SuppressLint("RestrictedApi")
+    public void retry() {
+        if (retryConsumer == null) return;
+        ArchTaskExecutor.getInstance().executeOnDiskIO(() -> retryConsumer.accept(null));
     }
 
 }

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetPackPractice.Paging">
         <activity android:name=".SearchArticleActivity" />
-        <activity android:name=".RemoteLoadActivity" />
+        <activity android:name=".MockNetWithErrorLoadActivity" />
         <activity android:name=".RoomLoadActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

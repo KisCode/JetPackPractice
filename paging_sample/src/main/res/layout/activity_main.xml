@@ -12,18 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="startRoomSample"
-        android:text="分页查询Room数据库" />
+        android:text="@string/title_room_paging" />
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="startMockNetRequest"
-        android:text="分页模拟网络请求" />
+        android:text="@string/title_mock_net_with_error" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="startMockNetRequestWithParam"
-        android:text="分页网络请求(带参数过滤)" />
+        android:text="@string/title_mock_net_with_search" />
 </LinearLayout>

@@ -16,21 +16,6 @@ import java.util.UUID;
  */
 
 public class MockApi {
-    private static final int PAGE_SIZE = 20;
-
-
-    public static List<User> loadUserList(int pageIndex, int pageSize) {
-        //随机耗时 500~3500ms
-        long time = (long) (Math.random() * 3000 + 200);
-        try {
-            //模拟耗时
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return getUserList(pageIndex, pageSize);
-    }
 
     private static List<User> getUserList(int pageIndex, int pageSize) {
         List<User> userList = new ArrayList<>();
@@ -54,10 +39,10 @@ public class MockApi {
             e.printStackTrace();
         }
 
- /*       if (time % 3 == 0) {
+        if (pageIndex > 1 && time % 3 == 0) {
             loadListener.onFailed(new Exception("加载数据失败了..."));
             return;
-        }*/
+        }
 
         List<User> userList = getUserList(pageIndex, pageSize);
 

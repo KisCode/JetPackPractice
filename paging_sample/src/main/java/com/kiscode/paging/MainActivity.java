@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startMockNetRequest(View view) {
-        startActivity(new Intent(this, RemoteLoadActivity.class));
+        startActivity(new Intent(this, MockNetWithErrorLoadActivity.class));
     }
 
     public void startMockNetRequestWithParam(View view) {

@@ -1,6 +1,7 @@
 package com.kiscode.paging;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.Consumer;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.paging.PagedList;
@@ -9,8 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.kiscode.paging.adapter.UserAdapter;
 import com.kiscode.paging.comman.LoadStatus;
@@ -21,7 +25,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
-public class RemoteLoadActivity extends AppCompatActivity {
+public class MockNetWithErrorLoadActivity extends BaseActionBarActivity {
 
     private UserViewModel viewModel;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -33,6 +37,20 @@ public class RemoteLoadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_remote);
+
+        getSupportActionBar().setTitle(R.string.title_mock_net_with_error);
+
+        viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(UserViewModel.class);
+
+        viewModel.pagedListLiveData.observe(this, users -> {
+            swipeRefreshLayout.setRefreshing(false);
+            adapter.submitList(users);
+        });
+
+        viewModel.loadStatusLiveData.observe(this, loadStatus -> {
+            Log.i("loadResult", loadStatus.name());
+            adapter.updateLoadStatus(loadStatus);
+        });
 
         swipeRefreshLayout = findViewById(R.id.swiperefresh_remote);
         swipeRefreshLayout.setOnRefreshListener(() -> {
@@ -48,19 +66,12 @@ public class RemoteLoadActivity extends AppCompatActivity {
         adapter = new UserAdapter();
         recyclerView.setAdapter(adapter);
 
-
-        viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(UserViewModel.class);
-
-        viewModel.pagedListLiveData.observe(this, users -> {
-            swipeRefreshLayout.setRefreshing(false);
-            adapter.submitList(users);
+        adapter.setOnRetryListener(new UserAdapter.OnRetryListener() {
+            @Override
+            public void onRetry() {
+                viewModel.retry();
+            }
         });
-
-        viewModel.loadStatusLiveData.observe(this, loadStatus -> {
-            Log.i("loadResult", loadStatus.name());
-        });
-
-
 
     }
 }
