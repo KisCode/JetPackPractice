@@ -21,9 +21,6 @@ public class GardenViewModel extends ViewModel {
 
     public GardenViewModel() {
         GardenDao gardenDao = AppDatabase.getInstance().getGardenDao();
-        PlantDao plantDao = AppDatabase.getInstance().getPlantDao();
-        LiveData<List<GardenPlant>> gardenPlants = gardenDao.queryAll();
-
         gardenWithPlant = gardenDao.queryAllGardenWithPlant();
     }
 
