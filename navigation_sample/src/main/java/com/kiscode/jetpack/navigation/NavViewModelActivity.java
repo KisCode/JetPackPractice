@@ -12,6 +12,7 @@ import android.os.Bundle;
  * 结合ViewModel使用Navigation
  */
 public class NavViewModelActivity extends AppCompatActivity {
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +23,12 @@ public class NavViewModelActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //NavHostFragment
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_vm);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_vm);
         NavigationUI.setupActionBarWithNavController(this, navController);
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        //NavHostFragment
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         //返回上级目录
         return navController.navigateUp();
     }

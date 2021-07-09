@@ -12,7 +12,22 @@
         tools:layout="@layout/fragment_vm_home">
         <action
             android:id="@+id/action_vmHomeFragment_to_vmDetailFragment"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_pop_enter_anim"
+            app:popExitAnim="@anim/nav_pop_exit_anim"
             app:destination="@id/vmDetailFragment" />
+        <!--
+            app:popEnterAnim="@anim/nav_pop_enter_anim"
+            app:popExitAnim="@anim/nav_pop_exit_anim"
+            此处 目标Page ：vmDetailFragment
+            原Page: vmHomeFragment
+
+                enterAnim：目标Page进入动画
+                exitAnim：目标Page进入时，原Page退出动画
+                popEnterAnim：目标页面退出时，原Page进入动画
+                popExitAnim：目标Page退出时动画
+                -->
     </fragment>
     <fragment
         android:id="@+id/vmDetailFragment"
@@ -21,6 +36,8 @@
         tools:layout="@layout/fragment_vm_detail">
         <action
             android:id="@+id/action_vmDetailFragment_to_vmHomeFragment"
+            app:enterAnim="@anim/nav_pop_enter_anim"
+            app:exitAnim="@anim/nav_pop_exit_anim"
             app:destination="@id/vmHomeFragment" />
     </fragment>
 </navigation>
