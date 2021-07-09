@@ -2,11 +2,13 @@ package com.kiscode.jetpack.navigation.fragment;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,25 +19,48 @@ import androidx.navigation.Navigation;
 
 import com.kiscode.jetpack.navigation.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
+
+    private static final String TAG = "HomeFragment";
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public HomeFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i(TAG, "onCreate");
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        Log.i(TAG,"getLayoutRes");
+        return R.layout.fragment_home;
+    }
+    @Override
+    protected void initData() {
+        Log.i(TAG,"initData");
+    }
+
+    @Override
+    protected void initViews(View view) {
+        Log.i(TAG,"initViews");
+        TextView tvTime = view.findViewById(R.id.tv_time);
+        tvTime.setText("页面创建时间:\t" + simpleDateFormat.format(Calendar.getInstance().getTime()));
         Button button = view.findViewById(R.id.btn_to_detail);
         final EditText etName = view.findViewById(R.id.et_name);
         final NavController navController = Navigation.findNavController(view);
@@ -52,5 +77,17 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
     }
 }
