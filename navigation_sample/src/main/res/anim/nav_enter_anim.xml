@@ -8,7 +8,7 @@
     <!--  从右向左进入  -->
     <translate
         android:interpolator="@android:anim/accelerate_interpolator"
-        android:duration="500"
+        android:duration="400"
         android:fromXDelta="100%"
         android:toXDelta="0%" />
 </set>

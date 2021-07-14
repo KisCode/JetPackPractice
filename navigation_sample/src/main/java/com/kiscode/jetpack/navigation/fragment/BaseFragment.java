@@ -1,14 +1,20 @@
 package com.kiscode.jetpack.navigation.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.kiscode.jetpack.navigation.fragment.strategy.DefaultInitLoadStrategy;
+import com.kiscode.jetpack.navigation.fragment.strategy.IInitLoad;
+import com.kiscode.jetpack.navigation.fragment.strategy.AbsInitLoadStrategy;
 
 /**
  * Description: Fragment 基类
@@ -20,13 +26,32 @@ import androidx.fragment.app.Fragment;
  * Author: keno
  * Date : 2021/7/9 14:56
  **/
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements IInitLoad {
+    private static final String TAG = "BaseFragment";
+    private AbsInitLoadStrategy initLoadStrategy;
     private boolean mIsFirsInit = true;
     private View mRootView;
+
+    //阅读fragment源码发现onCreateAnimation在ACTIVITY_CREATED周期方法回调
+    @Nullable
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        if (initLoadStrategy == null) {
+            initLoadStrategy = new DefaultInitLoadStrategy(getActivity(), this);
+        }
+        Animation animation = initLoadStrategy.load(enter, nextAnim);
+        return animation != null ? animation : super.onCreateAnimation(transit, enter, nextAnim);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate");
         if (mRootView == null) {
             mRootView = inflater.inflate(getLayoutRes(), container, false);
         }
@@ -36,11 +61,23 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.i(TAG, "onViewCreated");
+    }
+
+    @Override
+    public void init() {
+        Log.i(TAG, "init " + getClass().getSimpleName() + " mIsFirsInit:" + mIsFirsInit);
+        if (mRootView == null) return;
+
         if (mIsFirsInit) {
             mIsFirsInit = false;
-            initViews(view);
+            initViews(mRootView);
             initData();
         }
+    }
+
+    public void setInitLoadStrategy(AbsInitLoadStrategy initLoadStrategy) {
+        this.initLoadStrategy = initLoadStrategy;
     }
 
     /***
