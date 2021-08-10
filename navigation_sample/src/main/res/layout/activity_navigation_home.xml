@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NavigationHomeActivity">
+    tools:context=".NavBasicActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_home"
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         app:defaultNavHost="true"
         app:layout_constraintTop_toBottomOf="@id/toolbar_home"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:navGraph="@navigation/navigation_graphs_home" />
+        app:navGraph="@navigation/navigation_graphs_basic" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

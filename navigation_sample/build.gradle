@@ -37,6 +37,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$rootProject.navigationVersion"
 
     api "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    implementation 'com.google.android.material:material:1.2.1'
 
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$rootProject.testExtJunitVersion"

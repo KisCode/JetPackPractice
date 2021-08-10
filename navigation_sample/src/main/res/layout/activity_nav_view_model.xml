@@ -22,7 +22,5 @@
         app:defaultNavHost="true"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_vm"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:navGraph="@navigation/navigation_graphs_vm"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        app:navGraph="@navigation/navigation_graphs_vm"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

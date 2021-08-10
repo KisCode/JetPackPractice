@@ -19,7 +19,7 @@ import androidx.navigation.ui.NavigationUI;
  * Author: kisCode
  * Date : 2020/5/25 10:29
  **/
-public class NavigationHomeActivity extends AppCompatActivity {
+public class NavBasicActivity extends AppCompatActivity {
     public Toolbar toolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

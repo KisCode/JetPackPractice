@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graphs_appbar"
+    app:startDestination="@id/homeFragmentWithToolBar">
+
+    <fragment
+        android:id="@+id/homeFragmentWithToolBar"
+        android:name="com.kiscode.jetpack.navigation.fragment.appbar.HomeFragmentWithToolBar"
+        android:label="HomeFragmentWithToolBar" >
+        <action
+            android:id="@+id/action_homeFragmentWithToolBar_to_detailFragmentWithAppBar"
+            app:destination="@id/detailFragmentWithAppBar"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"/>
+        <action
+            android:id="@+id/action_homeFragmentWithToolBar_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragmentWithAppBar"
+        android:name="com.kiscode.jetpack.navigation.fragment.appbar.DetailFragmentWithAppBar"
+        android:label="DetailFragmentWithAppBar" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.kiscode.jetpack.navigation.fragment.appbar.SearchFragment"
+        android:label="SearchFragment" />
+</navigation>
