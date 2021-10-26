@@ -50,6 +50,7 @@ public class GardenFragment extends Fragment {
                 Log.i("GardenWithPlant", "gardenWithPlants size:" + gardenWithPlants.size());
 //                adapter.setNewDatas();
                 adapter.setNewDatas(gardenWithPlants);
+                binding.setHasPlantings(!gardenWithPlants.isEmpty());
             }
         });
     }

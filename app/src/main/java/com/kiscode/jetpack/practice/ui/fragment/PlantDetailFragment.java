@@ -17,7 +17,7 @@ import com.kiscode.jetpack.practice.databinding.FragmentPlantDetailBinding;
 import com.kiscode.jetpack.practice.viewmodels.PlantDetailViewModel;
 
 /**
- * Description:
+ * Description: 植物详情页面
  * Author: keno
  * Date : 2021/3/16 14:33
  **/

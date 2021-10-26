@@ -26,32 +26,17 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-
         //设置ActionBar
         setSupportActionBar(binding.toolbarHome);
 
-        //NavHostFragment
-/*
-        fragment容器通过Navigation.findNavController 检索NavController
+        //获取导航控制核心NavController
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_container_home);
-        NavigationUI.setupActionBarWithNavController(this, navController);
-        */
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph())
+                .setDrawerLayout(binding.drawerlayoutHome)
+                .build();
+        NavigationUI.setupWithNavController(binding.toolbarHome, navController, appBarConfiguration);
 
-        // FragmentContainerView容器通过 getSupportFragmentManager().findFragmentById 检索NavController
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_container_home);
-        assert navHostFragment != null;
-        navController = navHostFragment.getNavController();
-//        NavigationUI.setupActionBarWithNavController(this, navController);
-
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setDrawerLayout(binding.drawerlayoutHome).build();
-
-
-        NavigationUI.setupActionBarWithNavController(this, navController, this.appBarConfiguration);
-        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        // Set up navigation menu
         NavigationUI.setupWithNavController(binding.navigationView, navController);
-
     }
 
 

@@ -5,7 +5,7 @@ import android.app.Application;
 import com.kiscode.jetpack.practice.data.AppDatabase;
 
 /**
- * Description:
+ * Description: 根据Google sunFlower项目改造
  * Author: keno
  * Date : 2021/3/16 16:37
  **/

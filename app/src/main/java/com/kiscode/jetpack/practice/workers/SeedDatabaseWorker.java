@@ -42,6 +42,7 @@ public class SeedDatabaseWorker extends Worker {
             Type plantType = new TypeToken<List<Plant>>(){}.getType();
             List<Plant> plantList = new Gson().fromJson(reader, plantType);
             input.close();
+            Log.i("doWork","doWork:"+ Thread.currentThread().getName());
 
             AppDatabase database = AppDatabase.getInstance();
             database.getPlantDao().insertAll(plantList);

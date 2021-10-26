@@ -1,6 +1,7 @@
 package com.kiscode.jetpack.practice.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,12 @@ import java.util.List;
  **/
 public class PlantListFragment extends Fragment {
 
+    private static final String TAG = "PlantListFragment";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.i(TAG,"onCreateView");
         FragmentPlantListBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_plant_list, container, false);
 
         PlantListAdapter adapter = new PlantListAdapter(Collections.<Plant>emptyList());
@@ -42,6 +46,11 @@ public class PlantListFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i(TAG,"onDestroyView");
+    }
 
     private void subScribeUi(final FragmentPlantListBinding binding, final PlantListAdapter adapter) {
         //初始化ViewModel
