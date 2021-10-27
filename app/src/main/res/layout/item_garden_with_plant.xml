@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,47 +17,65 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="12dp"
         android:onClick="@{clickListener}">
 
         <ImageView
             android:id="@+id/iv_plant_item"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
             android:scaleType="centerCrop"
             app:imgUrl="@{gardenItemViewModel.imageUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_name_garden_plant"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="4dp"
+            android:paddingTop="4dp"
+            android:paddingStart="4dp"
             android:text="@{gardenItemViewModel.plantName}"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@id/iv_plant_item"
-            app:layout_constraintTop_toBottomOf="@id/iv_plant_item" />
-
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:background="@color/bgTransparent"
+            tools:text="Apple"
+            app:layout_constraintBottom_toTopOf="@id/tv_favorite_garden_plant"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_internal_garden_plant" />
 
         <TextView
             android:id="@+id/tv_internal_garden_plant"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_screen"
-            android:padding="4dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="4dp"
+            android:gravity="end"
+            android:textColor="@android:color/white"
+            tools:text="7"
             android:text="@{gardenItemViewModel.waterInterval}"
-            android:textSize="18sp"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv_name_garden_plant"
-            app:layout_constraintStart_toEndOf="@id/tv_name_garden_plant" />
+            android:textSize="16sp"
+            android:background="@color/bgTransparent"
+            app:layout_constraintBottom_toTopOf="@id/tv_favorite_garden_plant"
+            app:layout_constraintStart_toEndOf="@id/tv_name_garden_plant"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/tv_favorite_garden_plant"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="4dp"
+            android:paddingStart="4dp"
+            android:paddingBottom="4dp"
             android:text="@{gardenItemViewModel.plantDateStr}"
-            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            tools:text="2021-12-12"
             app:layout_constraintStart_toStartOf="@id/tv_name_garden_plant"
-            app:layout_constraintTop_toBottomOf="@id/tv_name_garden_plant" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/bgTransparent"
+            app:layout_constraintBottom_toBottomOf="@id/iv_plant_item"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -18,10 +18,12 @@
 
         <ImageView
             android:id="@+id/iv_plant_item"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
             android:scaleType="centerCrop"
             app:imgUrl="@{plantModel.imageUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,10 +31,13 @@
             android:id="@+id/tv_time_plant_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/bgTransparent"
             android:padding="4dp"
             android:text="@{plantModel.name}"
+            android:textColor="@android:color/white"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@id/iv_plant_item"
-            app:layout_constraintTop_toBottomOf="@id/iv_plant_item" />
+            app:layout_constraintBottom_toBottomOf="@id/iv_plant_item"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/iv_plant_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
