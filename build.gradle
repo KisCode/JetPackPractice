@@ -19,6 +19,7 @@ buildscript {
         lifecycleViewmodelSavedstateVersion = '2.3.0-alpha04'
         legacySupportV4Version = '1.0.0'
         paging_version = "2.1.0"
+        workManagerVersion = "2.5.0"
 
         junitVersion = '4.13.2'
         testExtJunitVersion = '1.1.2'

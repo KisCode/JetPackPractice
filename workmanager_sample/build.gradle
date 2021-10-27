@@ -7,9 +7,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.kiscode.paging"
-        minSdkVersion 21
-        targetSdkVersion 30
+        applicationId "kiscode.jectpack.workmanager"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -26,36 +26,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-
-    dataBinding {
-        enabled = true
-    }
 }
 
 dependencies {
-
     implementation "androidx.appcompat:appcompat:$rootProject.appcompatVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintlayoutVersion"
-
     implementation "com.google.android.material:material:$materialVersion"
-
-    // add for room
-    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
-    //配合rxjava使用
-    implementation "android.arch.persistence.room:rxjava2:$rootProject.roomVersion"
-    //room 数据库编译器
-    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
-
-    debugImplementation "com.amitshekhar.android:debug-db:$rootProject.debugDBVersion"
-
-    //分页库 paging
-    implementation "androidx.paging:paging-runtime:$paging_version"
-
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayoutVersion"
+    implementation "androidx.work:work-runtime:$workManagerVersion"
 
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$rootProject.testExtJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
-
 }
