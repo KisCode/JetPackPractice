@@ -44,6 +44,9 @@ public class HomeActivity extends AppCompatActivity {
     @Inject
     ExecutorService mExecutor;
 
+    @Inject
+    ExecutorService mExecutor2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,21 +64,22 @@ public class HomeActivity extends AppCompatActivity {
         Log.i(TAG, "cat name is " + mBlueCat.getName());
         Log.i(TAG, "cat name is " + mRedCat.getName());
 
+        //注入多个对象最终都指向同一个 单例的Executor
+        Log.i(TAG, mExecutor.hashCode()+ "------------" + mExecutor2.hashCode());
     }
 
     private void initView() {
         Button btnExecute = findViewById(R.id.btn_execute);
-        btnExecute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (int i = 0; i < 10000; i++) {
-                    mExecutor.execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.i(TAG, Thread.currentThread().getName());
-                        }
-                    });
-                }
+        btnExecute.setOnClickListener(v -> {
+            for (int i = 0; i < 100; i++) {
+                mExecutor.execute(() -> {
+                    Log.i(TAG, Thread.currentThread().getName());
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
             }
         });
     }
