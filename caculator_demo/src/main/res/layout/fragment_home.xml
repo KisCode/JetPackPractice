@@ -44,8 +44,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
+            android:layout_width="@dimen/size_image_home"
+            android:layout_height="@dimen/size_image_home"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toTopOf="@+id/btnEnter"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"

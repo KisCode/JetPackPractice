@@ -1,6 +1,7 @@
 package com.kiscode.jetpack.practice.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -37,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.toolbarHome, navController, appBarConfiguration);
 
         NavigationUI.setupWithNavController(binding.navigationView, navController);
+
     }
 
 
