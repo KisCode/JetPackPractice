@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.kiscode.jetpack.navigation.viewmodel.MyViewModel" />
+            type="com.kiscode.jetpack.navigation.vm.viewmodel.MyViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bgColor"
-        tools:context=".fragment.VmDetailFragment">
+        tools:context=".vm.fragment.VmDetailFragment">
 
 
         <TextView

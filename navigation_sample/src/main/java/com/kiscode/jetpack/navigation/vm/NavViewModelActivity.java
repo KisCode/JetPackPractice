@@ -1,4 +1,4 @@
-package com.kiscode.jetpack.navigation;
+package com.kiscode.jetpack.navigation.vm;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,6 +10,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+
+import com.kiscode.jetpack.navigation.R;
 
 /***
  * 结合ViewModel使用Navigation

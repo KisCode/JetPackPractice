@@ -1,4 +1,4 @@
-package com.kiscode.jetpack.navigation.fragment;
+package com.kiscode.jetpack.navigation.vm.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,10 +17,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
+import com.kiscode.jetpack.navigation.vm.viewmodel.MyViewModel;
 import com.kiscode.jetpack.navigation.R;
 import com.kiscode.jetpack.navigation.databinding.FragmentVmHomeBinding;
-import com.kiscode.jetpack.navigation.viewmodel.MyViewModel;
 
 public class VmHomeFragment extends Fragment implements ViewModelStoreOwner {
     private static final String TAG = "VmHomeFragment";
@@ -68,7 +67,6 @@ public class VmHomeFragment extends Fragment implements ViewModelStoreOwner {
             @Override
             public void onClick(View v) {
                 NavController controller = Navigation.findNavController(v);
-                Bundle bundle = new Bundle();
                 controller.navigate(R.id.action_vmHomeFragment_to_vmDetailFragment);
             }
         });

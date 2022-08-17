@@ -1,4 +1,4 @@
-package com.kiscode.jetpack.navigation;
+package com.kiscode.jetpack.navigation.withbar;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+
+import com.kiscode.jetpack.navigation.R;
 
 /**
  * Description: Navigation管理自带标题栏的fragment

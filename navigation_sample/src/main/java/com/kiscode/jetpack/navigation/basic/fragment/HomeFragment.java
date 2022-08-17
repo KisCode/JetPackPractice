@@ -1,24 +1,21 @@
-package com.kiscode.jetpack.navigation.fragment;
+package com.kiscode.jetpack.navigation.basic.fragment;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.kiscode.jetpack.navigation.R;
+import com.kiscode.jetpack.navigation.common.BaseFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

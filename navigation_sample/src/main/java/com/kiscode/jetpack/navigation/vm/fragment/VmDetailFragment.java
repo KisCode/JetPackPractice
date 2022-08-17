@@ -1,4 +1,4 @@
-package com.kiscode.jetpack.navigation.fragment;
+package com.kiscode.jetpack.navigation.vm.fragment;
 
 import android.os.Bundle;
 
@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.kiscode.jetpack.navigation.R;
 import com.kiscode.jetpack.navigation.databinding.FragmentVmDetailBinding;
-import com.kiscode.jetpack.navigation.viewmodel.MyViewModel;
+import com.kiscode.jetpack.navigation.vm.viewmodel.MyViewModel;
 
 /**
  * A simple {@link Fragment} subclass.

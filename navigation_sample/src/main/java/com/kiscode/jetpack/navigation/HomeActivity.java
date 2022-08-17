@@ -6,6 +6,10 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kiscode.jetpack.navigation.basic.NavBasicActivity;
+import com.kiscode.jetpack.navigation.vm.NavViewModelActivity;
+import com.kiscode.jetpack.navigation.withbar.NavAppBarActivity;
+
 public class HomeActivity extends AppCompatActivity {
 
     @Override

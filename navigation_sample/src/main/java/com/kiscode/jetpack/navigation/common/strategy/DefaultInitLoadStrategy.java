@@ -1,4 +1,4 @@
-package com.kiscode.jetpack.navigation.fragment.strategy;
+package com.kiscode.jetpack.navigation.common.strategy;
 
 import android.content.Context;
 import android.view.animation.Animation;

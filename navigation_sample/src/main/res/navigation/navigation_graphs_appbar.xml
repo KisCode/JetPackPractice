@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/homeFragmentWithToolBar"
-        android:name="com.kiscode.jetpack.navigation.fragment.appbar.HomeFragmentWithToolBar"
+        android:name="com.kiscode.jetpack.navigation.withbar.fragment.HomeFragmentWithToolBar"
         android:label="HomeFragmentWithToolBar" >
         <action
             android:id="@+id/action_homeFragmentWithToolBar_to_detailFragmentWithAppBar"
@@ -21,10 +21,10 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragmentWithAppBar"
-        android:name="com.kiscode.jetpack.navigation.fragment.appbar.DetailFragmentWithAppBar"
+        android:name="com.kiscode.jetpack.navigation.withbar.fragment.DetailFragmentWithAppBar"
         android:label="DetailFragmentWithAppBar" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.kiscode.jetpack.navigation.fragment.appbar.SearchFragment"
+        android:name="com.kiscode.jetpack.navigation.withbar.fragment.SearchFragment"
         android:label="SearchFragment" />
 </navigation>

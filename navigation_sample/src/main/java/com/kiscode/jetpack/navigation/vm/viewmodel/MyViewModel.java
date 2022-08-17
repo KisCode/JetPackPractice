@@ -1,4 +1,4 @@
-package com.kiscode.jetpack.navigation.viewmodel;
+package com.kiscode.jetpack.navigation.vm.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

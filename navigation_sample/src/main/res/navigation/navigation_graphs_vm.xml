@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/vmHomeFragment"
-        android:name="com.kiscode.jetpack.navigation.fragment.VmHomeFragment"
+        android:name="com.kiscode.jetpack.navigation.vm.fragment.VmHomeFragment"
         android:label="首页"
         tools:layout="@layout/fragment_vm_home">
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/vmDetailFragment"
-        android:name="com.kiscode.jetpack.navigation.fragment.VmDetailFragment"
+        android:name="com.kiscode.jetpack.navigation.vm.fragment.VmDetailFragment"
         android:label="Detail"
         tools:layout="@layout/fragment_vm_detail">
         <action

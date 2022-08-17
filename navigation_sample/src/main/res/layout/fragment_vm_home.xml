@@ -5,14 +5,13 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.kiscode.jetpack.navigation.viewmodel.MyViewModel" />
+            type="com.kiscode.jetpack.navigation.vm.viewmodel.MyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.VmHomeFragment">
-
+        tools:context=".vm.fragment.VmHomeFragment">
 
         <TextView
             android:id="@+id/textView2"

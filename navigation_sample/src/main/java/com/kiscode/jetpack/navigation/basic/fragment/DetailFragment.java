@@ -1,4 +1,4 @@
-package com.kiscode.jetpack.navigation.fragment;
+package com.kiscode.jetpack.navigation.basic.fragment;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +12,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.kiscode.jetpack.navigation.R;
-import com.kiscode.jetpack.navigation.fragment.strategy.AnimationEndLoadStrategy;
+import com.kiscode.jetpack.navigation.common.BaseFragment;
+import com.kiscode.jetpack.navigation.common.strategy.AnimationEndLoadStrategy;
 
 /**
  * Description: 详情页面

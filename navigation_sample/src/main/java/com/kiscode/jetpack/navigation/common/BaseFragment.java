@@ -1,4 +1,4 @@
-package com.kiscode.jetpack.navigation.fragment;
+package com.kiscode.jetpack.navigation.common;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.kiscode.jetpack.navigation.fragment.strategy.DefaultInitLoadStrategy;
-import com.kiscode.jetpack.navigation.fragment.strategy.IInitLoad;
-import com.kiscode.jetpack.navigation.fragment.strategy.AbsInitLoadStrategy;
+import com.kiscode.jetpack.navigation.common.strategy.DefaultInitLoadStrategy;
+import com.kiscode.jetpack.navigation.common.strategy.IInitLoad;
+import com.kiscode.jetpack.navigation.common.strategy.AbsInitLoadStrategy;
 
 /**
  * Description: Fragment 基类

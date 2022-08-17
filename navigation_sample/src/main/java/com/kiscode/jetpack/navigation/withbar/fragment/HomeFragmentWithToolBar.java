@@ -1,4 +1,4 @@
-package com.kiscode.jetpack.navigation.fragment.appbar;
+package com.kiscode.jetpack.navigation.withbar.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
