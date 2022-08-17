@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -21,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Navigation 基础用法，不同页面跳转演示
  */
 public class HomeFragment extends BaseFragment {
 
@@ -39,24 +38,19 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause");
+    protected int getLayoutRes() {
+        Log.i(TAG, "getLayoutRes");
+        return R.layout.fragment_home;
     }
 
     @Override
-    protected int getLayoutRes() {
-        Log.i(TAG,"getLayoutRes");
-        return R.layout.fragment_home;
-    }
-    @Override
     protected void initData() {
-        Log.i(TAG,"initData");
+        Log.i(TAG, "initData");
     }
 
     @Override
     protected void initViews(View view) {
-        Log.i(TAG,"initViews");
+        Log.i(TAG, "initViews");
         TextView tvTime = view.findViewById(R.id.tv_time);
         tvTime.setText("页面创建时间:\t" + simpleDateFormat.format(Calendar.getInstance().getTime()));
         Button button = view.findViewById(R.id.btn_to_detail);
@@ -75,6 +69,12 @@ public class HomeFragment extends BaseFragment {
                 }
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
     }
 
     @Override

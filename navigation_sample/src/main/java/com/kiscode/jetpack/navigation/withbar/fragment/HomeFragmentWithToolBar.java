@@ -39,6 +39,20 @@ public class HomeFragmentWithToolBar extends Fragment {
                 navController.navigate(R.id.action_homeFragmentWithToolBar_to_searchFragment);
             }
         });
+
+        loadWebFragment();
+    }
+
+    private void loadWebFragment() {
+        String tag = "WebviewFragment";
+        Fragment fragmentByTag = getChildFragmentManager().findFragmentByTag(tag);
+        if (fragmentByTag == null) {
+            WebviewFragment webFragment = new WebviewFragment();
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.container_web, webFragment, tag)
+                    .commit();
+        }
     }
 
 }

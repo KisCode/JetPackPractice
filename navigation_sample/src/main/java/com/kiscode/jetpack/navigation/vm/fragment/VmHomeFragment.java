@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.NavController;
@@ -58,6 +59,12 @@ public class VmHomeFragment extends Fragment implements ViewModelStoreOwner {
                              Bundle savedInstanceState) {
         Log.i(TAG_LIFE, "onCreateView");
         final MyViewModel viewModel = new ViewModelProvider(getActivity()).get(MyViewModel.class);
+        viewModel.getNumber().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                Log.i(TAG, "onChanged:" + integer);
+            }
+        });
         Log.i(TAG, "onCreateView homeFragment:" + viewModel.hashCode());
         FragmentVmHomeBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_vm_home, container, false);
         binding.setViewmodel(viewModel);
@@ -70,25 +77,6 @@ public class VmHomeFragment extends Fragment implements ViewModelStoreOwner {
                 controller.navigate(R.id.action_vmHomeFragment_to_vmDetailFragment);
             }
         });
-
-        binding.seekBar.setProgress(0);
-        binding.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                viewModel.getNumber().setValue(progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
         return binding.getRoot();
     }
 

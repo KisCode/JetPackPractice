@@ -49,12 +49,12 @@ public class DetailFragment extends BaseFragment {
     protected void initViews(View view) {
         Log.d(TAG, "initViews");
         final String name = getArguments().getString("name");
-        try {
+/*        try {
             //模拟耗时操作
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
         final NavController navController = Navigation.findNavController(view);
         Button button = view.findViewById(R.id.btn_to_home);
